@@ -57,26 +57,27 @@
                             const promoDiv = document.createElement("div");
                             promoDiv.classList.add("promo");
                             promoDiv.innerHTML = `
-                                <img src="${imagen}" alt="Logo de ${nombre}" class="header-logo">
-                                <h3>${nombre}</h3>
-                                <p>Código: <span class="code">${codigo}</span></p>
-                                <p>${descuento}</p>
-                                <p>Caduca el: <span class="expiry-date">${caducidad}</span></p>
-                                <button onclick="copyCode('${codigo}')">Copiar código</button>
-                                <a href="${url}" target="_blank">
-                                    <button class="link-button">IR A LA WEB</button>
-                                </a>
-                                ${bases ? `<a href="${bases}" target="_blank"><button class="link-button">Abrir Bases legales</button></a>` : ""}
+                                <div style="display: flex; align-items: center; justify-content: space-between;">
+                                    <div>
+                                        <img src="${imagen}" alt="Logo de ${nombre}" class="header-logo">
+                                        <h3>${nombre}</h3>
+                                        <p>Código: <span class="code">${codigo}</span></p>
+                                        <p>${descuento}</p>
+                                        <p>Caduca el: <span class="expiry-date">${caducidad}</span></p>
+                                        <button onclick="copyCode('${codigo}')">Copiar código</button>
+                                        <a href="${url}" target="_blank">
+                                            <button class="link-button">IR A LA WEB</button>
+                                        </a>
+                                        ${bases ? `<a href="${bases}" target="_blank"><button class="link-button">Abrir Bases legales</button></a>` : ""}
+                                    </div>
+                                    <blockquote class="tiktok-embed" cite="${tiktok}" data-video-id="7481037112754670870" style="max-width: 605px; min-width: 325px;"> 
+                                        <section>
+                                            <a target="_blank" title="@pandaliciosus" href="https://www.tiktok.com/@pandaliciosus?refer=embed">@pandaliciosus</a>
+                                        </section> 
+                                    </blockquote>
+                                </div>
                             `;
                             promoSection.appendChild(promoDiv);
-				<blockquote class="tiktok-embed" cite=${tiktok} data-video-id="7481037112754670870" style="max-width: 605px;min-width: 325px;" > 
-					<section>
-						<a target="_blank" title="@pandaliciosus" href="https://www.tiktok.com/@pandaliciosus?refer=embed">@pandaliciosus</a>
-					</section> 
-				</blockquote> 
-
-				<script async src="https://www.tiktok.com/embed.js">
-    				</script>
                         });
                     } else {
                         console.log("No hay datos en la respuesta de la API.");
@@ -88,19 +89,9 @@
                     document.getElementById("promos").innerHTML = "<p>Error al cargar los códigos.</p>";
                 });
         });
-    
-        function copyCode(code) {
-            const tempInput = document.createElement("input");
-            tempInput.value = code;
-            document.body.appendChild(tempInput);
-            tempInput.select();
-            document.execCommand("copy");
-            document.body.removeChild(tempInput);
-            alert("¡Código copiado! Usa el código " + code);
-        }
     </script>
-
+    <script async src="https://www.tiktok.com/embed.js"></script>
 </body>
 </html>
-        
+
 
