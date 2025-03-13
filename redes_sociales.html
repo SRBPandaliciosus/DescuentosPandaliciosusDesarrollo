@@ -12,10 +12,14 @@
             min-width: 200px !important;
             height: 400px !important;
             overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         .tiktok-embed iframe {
             width: 100% !important;
-            height: 100% !important;
+            height: auto !important;
+            max-height: 400px !important;
         }
     </style>
 </head>
@@ -50,7 +54,7 @@
             const apiKey = "AIzaSyD4OALe3yXeotqhoo6ttmzTECP990K3x88";
             const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/RedesSociales?key=${apiKey}`;
 
-            console.log("URL de la API:", url); // Para depuración
+            console.log("URL de la API:", url);
 
             fetch(url)
                 .then(response => response.json())
@@ -109,4 +113,5 @@
     </script>
 </body>
 </html>
+
 
