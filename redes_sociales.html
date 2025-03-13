@@ -6,6 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Códigos Promocionales - Redes Sociales</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .tiktok-embed {
+            max-width: 250px !important;
+            min-width: 200px !important;
+            height: 400px !important;
+            overflow: hidden;
+        }
+        .tiktok-embed iframe {
+            width: 100% !important;
+            height: 100% !important;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -43,14 +55,14 @@
             fetch(url)
                 .then(response => response.json())
                 .then(data => {
-                    console.log("Datos recibidos desde Google Sheets:", data); // Para verificar los datos recibidos
+                    console.log("Datos recibidos desde Google Sheets:", data);
 
                     const promoSection = document.getElementById("promos");
-                    promoSection.innerHTML = ""; // Limpia contenido previo
+                    promoSection.innerHTML = "";
 
                     if (data.values && data.values.length > 1) {
                         data.values.slice(1).forEach(row => {
-                            console.log("Fila de datos procesada:", row); // Verifica cada fila
+                            console.log("Fila de datos procesada:", row);
 
                             const [nombre, codigo, descuento, caducidad, imagen, url, bases, tiktok] = row;
 
@@ -70,7 +82,7 @@
                                         </a>
                                         ${bases ? `<a href="${bases}" target="_blank"><button class="link-button">Abrir Bases legales</button></a>` : ""}
                                     </div>
-                                    ${tiktok ? `<blockquote class="tiktok-embed" cite="${tiktok}" data-video-id="${tiktok.split('/').pop()}" style="max-width: 300px; min-width: 250px; height: 450px;">
+                                    ${tiktok ? `<blockquote class="tiktok-embed" cite="${tiktok}" data-video-id="${tiktok.split('/').pop()}">
                                         <section>
                                             <a target="_blank" title="@pandaliciosus" href="https://www.tiktok.com/@pandaliciosus?refer=embed">@pandaliciosus</a>
                                         </section>
@@ -80,7 +92,6 @@
                             promoSection.appendChild(promoDiv);
                         });
                         
-                        // Forzar carga del script de TikTok después de añadir los embeds
                         let tiktokScript = document.createElement('script');
                         tiktokScript.src = "https://www.tiktok.com/embed.js";
                         tiktokScript.async = true;
@@ -98,3 +109,4 @@
     </script>
 </body>
 </html>
+
