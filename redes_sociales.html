@@ -52,7 +52,7 @@
                         data.values.slice(1).forEach(row => {
                             console.log("Fila de datos procesada:", row); // Verifica cada fila
 
-                            const [nombre, codigo, descuento, caducidad, imagen, url, bases] = row;
+                            const [nombre, codigo, descuento, caducidad, imagen, url, bases, tiktok] = row;
 
                             const promoDiv = document.createElement("div");
                             promoDiv.classList.add("promo");
@@ -66,7 +66,15 @@
                                 <a href="${url}" target="_blank">
                                     <button class="link-button">IR A LA WEB</button>
                                 </a>
-                                ${bases ? `<a href="${bases}" target="_blank"><button class="link-button">Abrir Bases legales</button></a>` : ""}
+                                ${bases ? `<a href="${bases}" target="_blank"><button class="link-button">Abrir Bases legales</button></a>
+				<blockquote class="tiktok-embed" cite=${tiktok} data-video-id="7481037112754670870" style="max-width: 605px;min-width: 325px;" > 
+					<section>
+						<a target="_blank" title="@pandaliciosus" href="https://www.tiktok.com/@pandaliciosus?refer=embed">@pandaliciosus</a>
+					</section> 
+				</blockquote> 
+
+				<script async src="https://www.tiktok.com/embed.js">
+    				</script>` : ""}
                             `;
                             promoSection.appendChild(promoDiv);
                         });
@@ -92,15 +100,6 @@
         }
     </script>
 
-<blockquote class="tiktok-embed" cite="https://www.tiktok.com/@pandaliciosus/video/7481037112754670870" data-video-id="7481037112754670870" style="max-width: 605px;min-width: 325px;" > 
-	<section>
-			<a target="_blank" title="@pandaliciosus" href="https://www.tiktok.com/@pandaliciosus?refer=embed">@pandaliciosus</a>
-	</section> 
-</blockquote> 
-
-    <script async src="https://www.tiktok.com/embed.js">
-    </script>
-    
 </body>
 </html>
         
