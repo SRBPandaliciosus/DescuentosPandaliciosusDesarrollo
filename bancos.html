@@ -11,3 +11,11 @@
     <header>
         <div class="header-content">
             <
+fetch(url)
+    .then(response => response.json())
+    .then(data => {
+        console.log("Datos recibidos desde Google Sheets:", data);
+    })
+    .catch(error => {
+        console.error("Error al cargar los datos de Google Sheets:", error);
+    });
