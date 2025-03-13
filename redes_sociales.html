@@ -24,7 +24,7 @@
     </header>
 
     <section id="promos">
-        <h2>Códigos para Bancos</h2>
+        <h2>Códigos para Redes sociales</h2>
         <p>Cargando datos...</p>
     </section>
 
@@ -70,15 +70,21 @@
                                         </a>
                                         ${bases ? `<a href="${bases}" target="_blank"><button class="link-button">Abrir Bases legales</button></a>` : ""}
                                     </div>
-                                    <blockquote class="tiktok-embed" cite="${tiktok}" data-video-id="7481037112754670870" style="max-width: 605px; min-width: 325px;"> 
+                                    ${tiktok ? `<blockquote class="tiktok-embed" cite="${tiktok}" data-video-id="${tiktok.split('/').pop()}" style="max-width: 605px; min-width: 325px;">
                                         <section>
                                             <a target="_blank" title="@pandaliciosus" href="https://www.tiktok.com/@pandaliciosus?refer=embed">@pandaliciosus</a>
-                                        </section> 
-                                    </blockquote>
+                                        </section>
+                                    </blockquote>` : ""}
                                 </div>
                             `;
                             promoSection.appendChild(promoDiv);
                         });
+                        
+                        // Forzar carga del script de TikTok después de añadir los embeds
+                        let tiktokScript = document.createElement('script');
+                        tiktokScript.src = "https://www.tiktok.com/embed.js";
+                        tiktokScript.async = true;
+                        document.body.appendChild(tiktokScript);
                     } else {
                         console.log("No hay datos en la respuesta de la API.");
                         promoSection.innerHTML = "<p>No hay datos disponibles.</p>";
@@ -90,8 +96,5 @@
                 });
         });
     </script>
-    <script async src="https://www.tiktok.com/embed.js"></script>
 </body>
 </html>
-
-
