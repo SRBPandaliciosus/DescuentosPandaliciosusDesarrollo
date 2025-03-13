@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Códigos Promocionales desde Google Sheets</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Promociones desde Google Sheets</h1>
+    </header>
+    
+    <section id="promos">
+        <h2>Códigos de Descuento</h2>
+        <p>Cargando datos...</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Códigos Promocionales</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const sheetId = "1KD9z_lI3ZTIanqxEwZTuQizOj4WgObw19tebtAcCSBY";
+            const apiKey = "AIzaSyD4OALe3yXeotqhoo6ttmzTECP990K3x88";
+            const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/Hoja1?key=${apiKey}`;
+            
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    const promoSection = document.getElementById("promos");
+                    promoSection.innerHTML = ""; // Limpiar el contenido previo
+                    
+                    const rows = data.values;
+                    if (rows.length > 1) {
+                        rows.slice(1).forEach(row => {
+                            const [nombre, codigo, descuento, caducidad, imagen, url, bases] = row;
+                            
+                            const promoDiv = document.createElement("div");
+                            promoDiv.classList.add("promo");
+                            promoDiv.innerHTML = `
+                                <img src="${imagen}" alt="Logo de ${nombre}" class="header-logo">
+                                <h3>${nombre}</h3>
+                                <p>Código: <span class="code">${codigo}</span></p>
+                                <p>${descuento}</p>
+                                <p>Caduca el: <span class="expiry-date">${caducidad}</span></p>
+                                <button onclick="copyCode('${codigo}')">Copiar código</button>
+                                <a href="${url}" target="_blank">
+                                    <button class="link-button">IR A LA WEB</button>
+                                </a>
+                                ${bases ? `<a href="${bases}" target="_blank"><button class="link-button">Abrir Bases legales</button></a>` : ""}
+                            `;
+                            promoSection.appendChild(promoDiv);
+                        });
+                    } else {
+                        promoSection.innerHTML = "<p>No hay datos disponibles.</p>";
+                    }
+                })
+                .catch(error => {
+                    console.error("Error al cargar los datos de Google Sheets:", error);
+                    document.getElementById("promos").innerHTML = "<p>Error al cargar los códigos.</p>";
+                });
+        });
+
+        function copyCode(code) {
+            const tempInput = document.createElement("input");
+            tempInput.value = code;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+            alert("¡Código copiado! Usa el código " + code);
+        }
+    </script>
+</body>
+</html>

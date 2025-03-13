@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Códigos Promocionales Pandaliciosus</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <img src="pandachollo.png" alt="Logo de Panda" class="header-image">
+            <div class="header-text">
+                <h1>¡Bienvenido a los Códigos Promocionales!</h1>
+                <p>En esta web encontrarás varios códigos promocionales de bancos, tarjetas, redes sociales, juegos y más.</p>
+            </div>
+        </div>
+        <div class="visit-counter">
+            <p>Visitas: <span id="visitCount">0</span></p>
+        </div>
+		<div class="go-home">
+			<a href="index.html" class="header-image">
+				<img src="home.png" alt="Volver al Inicio" class="header-image">
+			</a>
+		</div>
+    </header>
+
+	<section id="search">
+        <h2>Buscar en el sitio</h2>
+        <form id="searchForm" action="resultados.html" method="get">
+            <input type="text" name="q" id="searchQuery" placeholder="Buscar en el sitio..." required>
+            <button type="submit">Buscar</button>
+        </form>
+    </section>
+	
+    <section id="promos">
+         <h2>Categorías</h2>
+            <div class="category-buttons">
+                <a href="bancos.html" class="category-button bancos">Bancos</a>
+                <a href="compras.html" class="category-button compras">Compras</a>
+                <a href="redes_sociales.html" class="category-button redes-sociales">Redes Sociales</a>
+                <a href="juegos.html" class="category-button juegos">Juegos</a>
+				<div class="go-home">
+					<a href="https://www.tiktok.com/@pandachollo?is_from_webapp=1&sender_device=pc" class="header-image">
+						<img src="tiktok.png" alt="@pandachollo en tiktok" class="header-image">					
+					</a>	
+				</div>
+            </div>      
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Códigos Promocionales</p>
+		<p> ESTA WEB SOLO HACE REFERENCIAS A PROMOCIONES DE TERCEROS POR LO QUE NO SE RESPONSABILIZA DEL MAL USO DE LAS MISMAS </p>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
