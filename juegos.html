@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Códigos Promocionales - Bancos</title>
+    <title>Códigos Promocionales - Juegos</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -12,40 +12,84 @@
         <div class="header-content">
             <img src="pandachollo.png" alt="Logo de Panda" class="header-image">
             <div class="header-text">
-                <h1>Códigos Promocionales - Bancos</h1>
+                <h1>Códigos Promocionales - Juegos</h1>
                 <p>Encuentra descuentos para servicios bancarios.</p>
             </div>
         </div>
-		<div class="go-home">
-			<a href="index.html" class="header-image">
-				<img src="home.png" alt="Volver al Inicio" class="header-image">
-			</a>
-		</div>
+        <div class="go-home">
+            <a href="index.html" class="header-image">
+                <img src="home.png" alt="Volver al Inicio" class="header-image">
+            </a>
+        </div>
     </header>
 
     <section id="promos">
-        <h2>¡¡¡¡¡¡¡¡EN REFORMA!!!!!!!!</h2>
-
-        <!-- Ejemplo de código promocional -->
-        <div class="promo">
-            <h3>Banco XYZ</h3>
-            <p>Código: <span class="code">BANK123</span></p>
-            <p>Descuento: 5% en transferencias internacionales.</p>
-            <p>Caduca el: <span class="expiry-date">31/12/2024</span></p>
-            <button onclick="copyCode('BANK123')">Copiar código</button>
-            <a href="https://www.bancoxyz.com" target="_blank">
-                <button class="link-button">Ir al Banco XYZ</button>
-            </a>
-        </div>
-
-        <!-- Agrega más códigos promocionales aquí -->
-
+        <h2>Códigos para Juegos</h2>
+        <p>Cargando datos...</p>
     </section>
 
     <footer>
         <p>&copy; 2024 Códigos Promocionales</p>
     </footer>
 
-    <script src="scripts.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const sheetId = "1KD9z_lI3ZTIanqxEwZTuQizOj4WgObw19tebtAcCSBY";
+            const apiKey = "AIzaSyD4OALe3yXeotqhoo6ttmzTECP990K3x88";
+            const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/Juegos?key=${apiKey}`;
+
+            console.log("URL de la API:", url); // Para depuración
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    console.log("Datos recibidos desde Google Sheets:", data); // Para verificar los datos recibidos
+
+                    const promoSection = document.getElementById("promos");
+                    promoSection.innerHTML = ""; // Limpia contenido previo
+
+                    if (data.values && data.values.length > 1) {
+                        data.values.slice(1).forEach(row => {
+                            console.log("Fila de datos procesada:", row); // Verifica cada fila
+
+                            const [nombre, codigo, descuento, caducidad, imagen, url, bases] = row;
+
+                            const promoDiv = document.createElement("div");
+                            promoDiv.classList.add("promo");
+                            promoDiv.innerHTML = `
+                                <img src="${imagen}" alt="Logo de ${nombre}" class="header-logo">
+                                <h3>${nombre}</h3>
+                                <p>Código: <span class="code">${codigo}</span></p>
+                                <p>${descuento}</p>
+                                <p>Caduca el: <span class="expiry-date">${caducidad}</span></p>
+                                <button onclick="copyCode('${codigo}')">Copiar código</button>
+                                <a href="${url}" target="_blank">
+                                    <button class="link-button">IR A LA WEB</button>
+                                </a>
+                                ${bases ? `<a href="${bases}" target="_blank"><button class="link-button">Abrir Bases legales</button></a>` : ""}
+                            `;
+                            promoSection.appendChild(promoDiv);
+                        });
+                    } else {
+                        console.log("No hay datos en la respuesta de la API.");
+                        promoSection.innerHTML = "<p>No hay datos disponibles.</p>";
+                    }
+                })
+                .catch(error => {
+                    console.error("Error al cargar los datos de Google Sheets:", error);
+                    document.getElementById("promos").innerHTML = "<p>Error al cargar los códigos.</p>";
+                });
+        });
+
+        function copyCode(code) {
+            const tempInput = document.createElement("input");
+            tempInput.value = code;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+            alert("¡Código copiado! Usa el código " + code);
+        }
+    </script>
 </body>
 </html>
