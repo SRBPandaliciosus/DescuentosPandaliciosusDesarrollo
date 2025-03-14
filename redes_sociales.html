@@ -7,20 +7,21 @@
     <title>Códigos Promocionales - Redes Sociales</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        .tiktok-embed {
-            max-width: 350px !important;
-            min-width: 250px !important;
-            height: 450px !important;
+        .tiktok-container {
+            width: 350px;
+            height: 450px;
             overflow: hidden;
             display: flex;
             justify-content: center;
             align-items: center;
+            position: relative;
         }
-        .tiktok-embed iframe {
-            transform: scale(0.8);
-            transform-origin: top left;
-            width: 125% !important;
-            height: 125% !important;
+        .tiktok-embed {
+            width: 100% !important;
+            height: 100% !important;
+            transform: scale(0.85);
+            transform-origin: center;
+            position: absolute;
         }
     </style>
 </head>
@@ -87,11 +88,13 @@
                                         </a>
                                         ${bases ? `<a href="${bases}" target="_blank"><button class="link-button">Abrir Bases legales</button></a>` : ""}
                                     </div>
-                                    ${tiktok ? `<blockquote class="tiktok-embed" cite="${tiktok}" data-video-id="${tiktok.split('/').pop()}">
-                                        <section>
-                                            <a target="_blank" title="@pandaliciosus" href="https://www.tiktok.com/@pandaliciosus?refer=embed">@pandaliciosus</a>
-                                        </section>
-                                    </blockquote>` : ""}
+                                    ${tiktok ? `<div class="tiktok-container">
+                                        <blockquote class="tiktok-embed" cite="${tiktok}" data-video-id="${tiktok.split('/').pop()}">
+                                            <section>
+                                                <a target="_blank" title="@pandaliciosus" href="https://www.tiktok.com/@pandaliciosus?refer=embed">@pandaliciosus</a>
+                                            </section>
+                                        </blockquote>
+                                    </div>` : ""}
                                 </div>
                             `;
                             promoSection.appendChild(promoDiv);
@@ -115,7 +118,5 @@
 </body>
 </html>
 
-</body>
-</html>
 
 
