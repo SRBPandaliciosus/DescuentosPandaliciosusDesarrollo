@@ -19,11 +19,12 @@
         .tiktok-embed {
             width: 100% !important;
             height: 100% !important;
+            transform: scale(0.85);
+            transform-origin: center;
         }
         .tiktok-embed iframe {
             width: 100% !important;
             height: 100% !important;
-            object-fit: cover;
         }
     </style>
 </head>
@@ -72,14 +73,14 @@
                         data.values.slice(1).forEach(row => {
                             console.log("Fila de datos procesada:", row);
 
-                            const [nombre, codigo, descuento, caducidad, imagen, url, bases, tiktok, logo] = row;
+                            const [nombre, codigo, descuento, caducidad, imagen, url, bases, tiktok] = row;
 
                             const promoDiv = document.createElement("div");
                             promoDiv.classList.add("promo");
                             promoDiv.innerHTML = `
                                 <div style="display: flex; align-items: center; justify-content: space-between;">
                                     <div>
-                                        <img src="${imagen}" alt="Logo de ${nombre}" class="header-${logo}">
+                                        <img src="${imagen}" alt="Logo de ${nombre}" class="header-logo">
                                         <h3>${nombre}</h3>
                                         <p>Código: <span class="code">${codigo}</span></p>
                                         <p>${descuento}</p>
@@ -119,7 +120,3 @@
     </script>
 </body>
 </html>
-
-
-
-
