@@ -53,6 +53,7 @@
                             console.log("Fila de datos procesada:", row);
 
                             const [nombre, codigo, descuento, caducidad, imagen, url, bases, tiktok, logo] = row;
+                            const videoId = tiktok ? new URL(tiktok).pathname.split("/").pop() : "";
 
                             const promoDiv = document.createElement("div");
                             promoDiv.classList.add("promo");
@@ -70,16 +71,21 @@
                                         </a>
                                         ${bases ? `<a href="${bases}" target="_blank"><button class="link-button">Abrir Bases legales</button></a>` : ""}
                                     </div>
-                                    ${tiktok ? `<blockquote class="tiktok-embed" cite="${tiktok}" data-video-id="${tiktok.split('/').pop()}" style="max-width: 605px;min-width: 325px;">
+                                    ${tiktok ? `
+                                    <blockquote class="tiktok-embed" cite="${tiktok}" data-video-id="${videoId}" style="max-width: 605px; min-width: 325px;">
                                         <section>
                                             <a target="_blank" title="@pandaliciosus" href="https://www.tiktok.com/@pandaliciosus?refer=embed">@pandaliciosus</a>
                                         </section>
-                                    </blockquote>
-                                    <script async src="https://www.tiktok.com/embed.js"></script>` : ""}
+                                    </blockquote>` : ""}
                                 </div>
                             `;
                             promoSection.appendChild(promoDiv);
                         });
+                        
+                        let tiktokScript = document.createElement('script');
+                        tiktokScript.src = "https://www.tiktok.com/embed.js";
+                        tiktokScript.async = true;
+                        document.body.appendChild(tiktokScript);
                     } else {
                         console.log("No hay datos en la respuesta de la API.");
                         promoSection.innerHTML = "<p>No hay datos disponibles.</p>";
@@ -93,4 +99,5 @@
     </script>
 </body>
 </html>
+
 
