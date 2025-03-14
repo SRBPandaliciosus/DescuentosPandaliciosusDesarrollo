@@ -52,12 +52,12 @@
                         data.values.slice(1).forEach(row => {
                             console.log("Fila de datos procesada:", row); // Verifica cada fila
 
-                            const [nombre, codigo, descuento, caducidad, imagen, url, bases] = row;
+                            const [nombre, codigo, descuento, caducidad, imagen, url, bases, logo] = row;
 
                             const promoDiv = document.createElement("div");
                             promoDiv.classList.add("promo");
                             promoDiv.innerHTML = `
-                                <img src="${imagen}" alt="Logo de ${nombre}" class="header-logo">
+                                <img src="${imagen}" alt="Logo de ${nombre}" class="header-${logo}">
                                 <h3>${nombre}</h3>
                                 <p>Código: <span class="code">${codigo}</span></p>
                                 <p>${descuento}</p>
