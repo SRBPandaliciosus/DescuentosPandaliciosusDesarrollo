@@ -71,13 +71,15 @@
                                         </a>
                                         ${bases ? `<a href="${bases}" target="_blank"><button class="link-button">Abrir Bases legales</button></a>` : ""}
                                     </div>
+                                        <p>  
+                                      ${tiktok ? `
+                                            <blockquote class="tiktok-embed" cite="${tiktok}" data-video-id="${videoId}" style="max-width: 300px; min-width: 120px;">
+                                                <section>
+                                                    <a target="_blank" title="@pandaliciosus" href="https://www.tiktok.com/@pandaliciosus?refer=embed">@pandaliciosus</a>
+                                                </section>
+                                            </blockquote>` : ""}
+                                        </p>
                                 </div>
-                                ${tiktok ? `
-                                    <blockquote class="tiktok-embed" cite="${tiktok}" data-video-id="${videoId}" style="max-width: 300px; min-width: 120px;">
-                                        <section>
-                                            <a target="_blank" title="@pandaliciosus" href="https://www.tiktok.com/@pandaliciosus?refer=embed">@pandaliciosus</a>
-                                        </section>
-                                    </blockquote>` : ""}
                             `;
                             promoSection.appendChild(promoDiv);
                         });
