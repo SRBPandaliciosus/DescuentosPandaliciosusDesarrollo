@@ -11,22 +11,20 @@ body {
     line-height: 1.6;
 }
 
+/* HEADER */
 header {
     background-color: #007bff;
     color: white;
-    padding: 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    padding: 2rem 1rem;
     position: relative;
 }
 
 .header-content {
     display: flex;
     align-items: center;
-    gap: 20px;
-    max-width: 800px;
-    margin: 0 auto;
+    gap: 15px;
+    max-width: 900px;
+    margin: auto;
 }
 
 .header-image {
@@ -36,25 +34,11 @@ header {
     object-fit: cover;
 }
 
-.header-logo {
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
-}
-
-.header-logo2 {
-    width: 120px;
-    height: 30px;
-    object-fit: cover;
-}
-
 .header-text h1 {
-    margin: 0;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
 }
 
 .header-text p {
-    margin: 5px 0 0;
     font-size: 1rem;
 }
 
@@ -62,172 +46,125 @@ header {
     position: absolute;
     top: 10px;
     right: 10px;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
+    background: rgba(0,0,0,0.5);
     padding: 5px 10px;
-    border-radius: 8px;
+    border-radius: 6px;
     font-size: 14px;
 }
 
-.go-home {
-    width: 60px;
-    height: 70px;
-    border-radius: 25%;
-    object-fit: cover;
+/* HERO */
+.hero {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 30px 0;
 }
 
+.main-cta {
+    padding: 20px 30px;
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    width: 260px;
+    text-align: center;
+}
+
+.main-cta.recetas {
+    background-color: #28a745;
+}
+
+.main-cta.ofertas {
+    background-color: #ff5722;
+}
+
+.main-cta:hover {
+    opacity: 0.9;
+    transform: scale(1.03);
+}
+
+/* BENEFITS */
+.benefits {
+    max-width: 800px;
+    margin: auto;
+    display: grid;
+    gap: 10px;
+    padding: 20px;
+    text-align: center;
+}
+
+.benefit {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+/* CATEGORIES */
 #categories {
     text-align: center;
     margin: 40px 0;
 }
 
 .category-buttons {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
+    display: grid;
+    gap: 15px;
+    max-width: 400px;
+    margin: auto;
 }
 
 .category-button {
-    display: inline-block;
-    padding: 20px 40px;
-    font-size: 24px;
+    padding: 15px;
+    font-size: 20px;
     font-weight: bold;
     text-decoration: none;
-    border-radius: 10px;
-    width: 300px;
-    text-align: center;
-    color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease, background-color 0.3s ease;
-}
-
-/* Colores específicos por categoría */
-.category-button.bancos {
-    background-color: #4caf50; /* Verde */
-}
-
-.category-button.bancos:hover {
-    background-color: #388e3c;
-    transform: scale(1.05);
-}
-
-.category-button.compras {
-    background-color: #2196f3; /* Azul */
-}
-
-.category-button.compras:hover {
-    background-color: #1976d2;
-    transform: scale(1.05);
-}
-
-.category-button.redes-sociales {
-    background-color: #ff5722; /* Naranja */
-}
-
-.category-button.redes-sociales:hover {
-    background-color: #e64a19;
-    transform: scale(1.05);
-}
-
-.category-button.juegos {
-    background-color: #9c27b0; /* Morado */
-}
-
-.category-button.juegos:hover {
-    background-color: #7b1fa2;
-    transform: scale(1.05);
-}
-
-section#promos {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-section#search {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 20px 0;
-}
-
-#searchForm {
-    display: flex;
-    gap: 10px;
-}
-
-#searchForm input {
-    padding: 10px;
-    font-size: 16px;
-    width: 300px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-#searchForm button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-#searchForm button:hover {
-    background-color: #0056b3;
-}
-
-.promo {
-    background-color: #f8f9fa;
-    margin: 10px 0;
-    padding: 15px;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.promo h3 {
-    color: #007bff;
-}
-
-button {
-    background-color: #28a745;
     color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-top: 10px;
 }
 
-button:hover {
-    background-color: #218838;
+.bancos { background-color: #4caf50; }
+.compras { background-color: #2196f3; }
+.redes-sociales { background-color: #ff9800; }
+.juegos { background-color: #9c27b0; }
+
+.category-button:hover {
+    transform: scale(1.05);
 }
 
-.link-button {
-    background-color: #007bff;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-top: 10px;
-    text-decoration: none;
-    display: inline-block;
-}
-
-.link-button:hover {
-    background-color: #0056b3;
-
-footer {
+/* SOCIAL */
+.social {
+    background: white;
+    padding: 30px;
     text-align: center;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
     margin-top: 20px;
+}
+
+.social-links a {
+    text-decoration: none;
+    color: #333;
+}
+
+.social-links img {
+    width: 60px;
+    border-radius: 50%;
+}
+
+/* FOOTER */
+footer {
     background-color: #343a40;
     color: white;
-    padding: 10px;
+    text-align: center;
+    padding: 20px;
 }
+
+footer a {
+    color: #ffc107;
+    text-decoration: none;
+}
+
